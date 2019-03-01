@@ -1,0 +1,66 @@
+<!-- Show this view if "show_read_products_html" property of AppComponent is true. -->
+<app-read-employees
+*ngIf="show_read_employees_html"
+(show_create_employee_event)="showCreateEmployee($event)"
+(show_read_one_employee_event)="showReadOneEmployee($event)"
+(show_update_employee_event)="showUpdateEmployee($event)"
+(show_delete_employee_event)="showDeleteEmployee($event)">
+</app-read-employees>
+
+<!--
+* Show this view if "show_create_product_html" is true. 
+* If (show_read_products_event) was emitted in CreateProductComponent,
+  trigger showReadProducts() method in AppComponent.
+-->
+<app-create-employee
+*ngIf="show_create_employee_html"
+(show_read_employees_event)="showReadEmployees($event)">
+</app-create-employee>
+
+<!--
+* Show this view if "show_read_one_product_html" is true.
+
+* If (show_read_products_event) was emmited in ReadOneProductComponent,
+  trigger showReadProducts() method in AppComponent.
+
+* Pass "product_id" property value of AppComponent
+  to [product_id] property of ReadOneProductComponent.
+-->
+<app-read-one-employee
+*ngIf="show_read_one_employee_html"
+(show_read_employees_event)="showReadEmployees($event)"
+[empreg_id]="empreg_id">
+</app-read-one-employee>
+
+<!--
+* Show this view if "show_update_product_html" is true.
+
+* Pass "product_id" property value of AppComponent
+  to [product_id] property of UpdateProductComponent.
+
+* If (show_read_products_event) was emitted in UpdateProductComponent,
+  trigger showReadProducts() method in AppComponent.
+-->
+<app-update-employee
+*ngIf="show_update_employee_html"
+[empreg_id]="empreg_id"
+(show_read_employees_event)="showReadEmployees($event)">
+</app-update-employee>
+
+<!--
+* Show this view if "show_delete_product_html" is true.
+
+* Pass "product_id" property value of AppComponent
+  to [product_id] property of UpdateProductComponent.
+
+* If (show_read_products_event) was emitted in DeleteProductComponent,
+  trigger showReadProducts() method in AppComponent.
+-->
+<app-delete-employee
+*ngIf="show_delete_employee_html"
+[empreg_id]="empreg_id"
+(show_read_employees_event)="showReadEmployees($event)">
+</app-delete-employee>
+
+
+<!-- /container -->

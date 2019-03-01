@@ -1,0 +1,101 @@
+<hr>
+<div class="row m-b-18px">
+  <div class="col-md-12">
+      <a (click)="readEmployees()" class='btn btn-primary pull-right'>
+          <span class='glyphicon glyphicon-list'></span> Read Employees
+      </a>
+  </div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+
+<!-- HTML form for creating a product -->
+<form [formGroup]="update_employee_form" (ngSubmit)="updateEmployee()">
+<table class='table table-hover table-responsive table-bordered'>
+
+        <tr>
+                <td>Primary Skill</td>
+                <td>
+                    <input
+                        formControlName="primarySkill"
+                        type="string" name="primarySkill"
+                        class="form-control" />
+              
+                    <!-- show this error if the field is 'empty' and 'touched' -->
+                    <!-- <div
+                        *ngIf="update_employee_form.get('primarySkill').touched && update_employee_form.get('primarySkill').hasError('required')"
+                        class="alert alert-danger">
+                    Primary Skill is required.
+                    </div> -->
+                </td>
+              </tr>
+
+    <tr>
+        <td>Experience</td>
+        <td>
+            <input
+                formControlName="experience"
+                type="number" name="experience"
+                class="form-control" required />
+      
+            <!-- show this error if the field is 'empty' and 'touched' -->
+            <div
+                *ngIf="update_employee_form.get('experience').touched && update_employee_form.get('experience').hasError('required')"
+                class="alert alert-danger">
+            Experience is required.
+            </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Notice Period</td>
+        <td>
+            <input
+                formControlName="noticePeriod"
+                type="number" name="noticePeriod"
+                class="form-control" required />
+      
+            <!-- show this error if the field is 'empty' and 'touched' -->
+            <div
+                *ngIf="update_employee_form.get('noticePeriod').touched && update_employee_form.get('noticePeriod').hasError('required')"
+                class="alert alert-danger">
+             Notice Period is required.
+            </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Current CTC</td>
+        <td>
+          <input
+          formControlName="CTC"
+          type="number" name="CTC"
+          class="form-control" required />
+  
+                <!-- show this error if the field is 'empty' and 'touched' -->
+                <div
+                    *ngIf="update_employee_form.get('CTC').touched && update_employee_form.get('CTC').hasError('required')"
+                    class="alert alert-danger">
+                    CTC is required.
+                </div>
+        </td>
+        </tr>
+    <tr>
+  
+
+  <tr>
+      <td></td>
+      <td>
+          <!-- Submit buttons is [disabled] if form is invalid. -->
+          <button class="btn btn-primary" type="submit" [disabled]="update_employee_form.invalid">
+              <span class="glyphicon glyphicon-edit"></span> Update
+          </button>
+      </td>
+  </tr>
+
+</table>
+</form>
+
+</div>
+</div>

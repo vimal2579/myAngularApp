@@ -1,0 +1,169 @@
+<hr>
+<div class="row m-b-18px">
+  <div class="col-md-12">
+      <a (click)="readEmployees()" class='btn btn-primary pull-right'>
+          <span class='glyphicon glyphicon-list'></span> Read Employees
+      </a>
+  </div>
+</div>
+
+<!-- HTML form for creating a product -->
+<div class="row">
+<div class="col-md-12">
+
+<!--
+  1. Bind our HTML form to Angular using [formGroup]
+  2. If form was submitted, call createProduct() method of CreateProductComponent
+-->
+<form [formGroup]="create_employee_form" (ngSubmit)="createEmployee()">
+<table class="table table-hover table-responsive table-bordered">
+  <tr>
+      <td>Name</td>
+      <td>
+          <!-- Bind this input field to our 'angular form field' using formControlName -->
+          <input
+              formControlName="name"
+              name="name" type="string"
+              class="form-control" required />
+
+          <!-- show this error if the field is 'empty' and 'touched' -->
+          <div
+              *ngIf="create_employee_form.get('name').touched && create_employee_form.get('name').hasError('required')"
+              class="alert alert-danger">
+              Name is required.
+          </div>
+      </td>
+  </tr>
+
+  <tr>
+      <td>Date of Birth</td>
+      <td>
+          <input
+              formControlName="dob"
+              type="string" name="dob"
+              class="form-control" required />
+
+          <!-- show this error if the field is 'empty' and 'touched' -->
+          <div
+              *ngIf="create_employee_form.get('dob').touched && create_employee_form.get('dob').hasError('required')"
+              class="alert alert-danger">
+          DOB is required.
+          </div>
+      </td>
+  </tr>
+
+  <tr>
+    <td>Current Company</td>
+    <td>
+        <input
+            formControlName="company"
+            type="string" name="company"
+            class="form-control" required />
+
+        <!-- show this error if the field is 'empty' and 'touched' -->
+        <div
+            *ngIf="create_employee_form.get('company').touched && create_employee_form.get('company').hasError('required')"
+            class="alert alert-danger">
+        Current Company is required.
+        </div>
+    </td>
+</tr>
+
+<tr>
+  <td>Experience</td>
+  <td>
+      <input
+          formControlName="experience"
+          type="number" name="experience"
+          class="form-control" required />
+
+      <!-- show this error if the field is 'empty' and 'touched' -->
+      <div
+          *ngIf="create_employee_form.get('experience').touched && create_employee_form.get('experience').hasError('required')"
+          class="alert alert-danger">
+      Experience is required.
+      </div>
+  </td>
+</tr>
+
+<tr>
+  <td>Notice Period</td>
+  <td>
+      <input
+          formControlName="noticePeriod"
+          type="number" name="noticePeriod"
+          class="form-control" required />
+
+      <!-- show this error if the field is 'empty' and 'touched' -->
+      <div
+          *ngIf="create_employee_form.get('noticePeriod').touched && create_employee_form.get('noticePeriod').hasError('required')"
+          class="alert alert-danger">
+       Notice Period is required.
+      </div>
+  </td>
+</tr>
+
+<tr>
+  <td>Primary Skill</td>
+  <td>
+      <input
+          formControlName="primarySkill"
+          type="string" name="primarySkill"
+          class="form-control" required />
+
+      <!-- show this error if the field is 'empty' and 'touched' -->
+      <div
+          *ngIf="create_employee_form.get('primarySkill').touched && create_employee_form.get('primarySkill').hasError('required')"
+          class="alert alert-danger">
+      Primary Skill is required.
+      </div>
+  </td>
+</tr>
+
+<tr>
+  <td>Employment Type</td>
+  <td>
+      <input
+          formControlName="employmentType"
+          type="string" name="employmentType"
+          class="form-control" required />
+
+      <!-- show this error if the field is 'empty' and 'touched' -->
+      <div
+          *ngIf="create_employee_form.get('employmentType').touched && create_employee_form.get('employmentType').hasError('required')"
+          class="alert alert-danger">
+      Employment Type is required.
+      </div>
+  </td>
+</tr>
+
+  <tr>
+      <td>Current CTC</td>
+      <td>
+        <input
+        formControlName="CTC"
+        type="number" name="CTC"
+        class="form-control" required />
+
+              <!-- show this error if the field is 'empty' and 'touched' -->
+              <div
+                  *ngIf="create_employee_form.get('CTC').touched && create_employee_form.get('CTC').hasError('required')"
+                  class="alert alert-danger">
+                  CTC is required.
+              </div>
+      </td>
+  </tr>
+  <tr>
+      <td></td>
+      <td>
+          <!-- disable the submit button if the form is 'invalid' -->
+          <button class="btn btn-primary" type="submit" [disabled]="create_employee_form.invalid">
+              <span class="glyphicon glyphicon-plus"></span> Create
+          </button>
+      </td>
+  </tr>
+</table>
+</form>
+
+</div>
+</div>

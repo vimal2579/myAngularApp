@@ -1,0 +1,68 @@
+<!-- <nav>
+    <ul class="menu">
+      <li class="is-active"><a routerLink="/login" routerLinkActive="active">Logout</a></li>
+      <li><a routerLink="/index/listitem" routerLinkActive="active">List Item</a></li>
+    </ul>
+ </nav>
+<hr>
+<router-outlet></router-outlet> -->
+<hr>
+<div class="row m-b-18px">
+    <div class="col-md-12">
+        <!-- button to create new product -->
+        <a (click)="createEmployee()" class='btn btn-primary pull-right'>
+            <span class='glyphicon glyphicon-plus'></span> Create Employee
+        </a>
+    </div>
+</div>
+ 
+<div class="row">
+    <div class="col-md-12">
+ 
+        <!-- HTML table for our list of product records -->
+        <table class='table table-hover table-responsive table-bordered'>
+ 
+            <tr>
+                <th>Registration ID</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Current Company</th>
+                <th>Experience</th>
+                <th>Notice Period</th>
+                <th>Primary Skill</th>
+                <th>Employment Type</th>
+                <th>Current CTC</th>
+                <th>Actions</th>
+            </tr>
+ 
+            <!-- Use *ngFor directive to loop throught our list of products. -->
+            <tr *ngFor="let employee of employees">
+                <td>{{employee.EmployeeRegID}}</td>
+                <td>{{employee.Name}}</td>
+                <td>{{employee.DOB}}</td>
+                <td>{{employee.Company}}</td>
+                <td>{{employee.Experience}}</td>
+                <td>{{employee.NoticePeriod}}</td>
+                <td>{{employee.PrimarySkill}}</td>
+                <td>{{employee.EmploymentType}}</td>
+                <td>{{employee.CTC}}</td>
+                <td style="width:270px;">
+                    <!-- read one product button -->
+                    <a (click)="readOneEmployee(employee.EmployeeRegID)" class='btn btn-primary m-r-3px'>
+                        <span class='glyphicon glyphicon-eye-open'></span> Read
+                    </a>
+ 
+                    <!-- edit product button -->
+                    <a (click)="updateEmployee(employee.EmployeeRegID)" class='btn btn-info m-r-3px'>
+                        <span class='glyphicon glyphicon-edit'></span> Edit
+                    </a>
+ 
+                    <!-- delete product button -->
+                    <a (click)="deleteEmployee(employee.EmployeeRegID)" class='btn btn-danger m-r-3px'>
+                        <span class='glyphicon glyphicon-remove'></span> Delete
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
