@@ -1,0 +1,8 @@
+-#!/bin/sh      
+ssh vimal2579@192.168.157.129 <<EOF        
+ cd /https://github.com/Vimalchn07/myAngularApp.git 
+ git pull       
+ npm install --production       
+ pm2 restart all
+ exit       
+EOF
