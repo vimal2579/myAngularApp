@@ -5,19 +5,18 @@ import { catchError } from 'rxjs/operators'
 import { map } from 'rxjs/operators';
 import { Employee } from '../employee';
  
-@Injectable() 
-// Service for products data.
-export class EmployeeService {
- 
+@Injectable()
+// Service for Employee data.
+export class EmployeeService { 
     // We need Http to talk to a remote server.
     constructor(private _http : Http){ } 
-    // Get list of products from remote server.
+    // Get list of employees from remote server.
     readEmployees()   
     {
         return this._http.get("http://localhost:51789/api/Employee/");            
     }
     
-    // Send product data to remote server to create it.
+    // Send employee data to remote server to create it.
     createEmployee(employee)
     {  
         let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -26,13 +25,13 @@ export class EmployeeService {
         return this._http.post("http://localhost:51789/api/Employee/", JSON.stringify(employee), options);        
     }
 
-    // Get a product details from remote server.
+    // Get a employee details from remote server.
     readOneEmployee(empreg_id)
     {
         return this._http.get("http://localhost:51789/api/Employee?id="+empreg_id);
     }
 
-    // Send product data to remote server to update it.
+    // Send employee data to remote server to update it.
     updateEmployee(empreg_id,employee)
     { 
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -42,7 +41,7 @@ export class EmployeeService {
        
     }
 
-    // Send product ID to remote server to delete it.
+    // Send employee ID to remote server to delete it.
 deleteEmployee(empreg_id)
 {
  

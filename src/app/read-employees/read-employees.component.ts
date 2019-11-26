@@ -3,6 +3,7 @@ import { EmployeeService } from '../Service/employee.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Observable} from 'rxjs';
 import { Employee } from '../employee';
+import { Router } from '@angular/router';
  
 @Component({
     selector: 'app-read-employees',
@@ -12,58 +13,28 @@ import { Employee } from '../employee';
 })
  
 export class ReadEmployeesComponent implements OnInit {
-    /*
-     Needed to notify the 'consumer of this component', which is the 'AppComponent',
-      that an 'event' happened in this component.
-    */
-    @Output() show_create_employee_event=new EventEmitter();
-    @Output() show_read_one_employee_event=new EventEmitter();
-    @Output() show_update_employee_event=new EventEmitter();
-    @Output() show_delete_employee_event=new EventEmitter();
  
-    // store list of products
+    // store list of employees
     employees : Employee[];
  
-    // initialize productService to retrieve list products in the ngOnInit()
-    constructor(private _employeeService: EmployeeService){}
- 
-    // methods that we will use later
-    createEmployee()
-    {
-        // tell the parent component (AppComponent)
-        this.show_create_employee_event.emit({
-        title: "Create Employee"
-        });
-    }
+    constructor(private _employeeService: EmployeeService,
+    private router : Router){}
     
-   // when user clicks the 'read' button
+   // when user clicks the 'Read' button
 readOneEmployee(id){
-    console.log('rp comp readOneEmployee');
-    // tell the parent component (AppComponent)
-    this.show_read_one_employee_event.emit({
-        empreg_id: id,
-        title: "Read One Employee"
-    });
-}
-
-    // when user clicks the 'update' button
+    this.router.navigate(['/readoneemployee', id]);
+    };
+    
+    // when user clicks the 'Edit' button
 updateEmployee(id){
-    // tell the parent component (AppComponent)
-    this.show_update_employee_event.emit({
-        empreg_id: id,
-        title: "Update Employee"
-    });
-}
-    // when user clicks the 'delete' button
+    this.router.navigate(['/editemployee', id]);
+};
+    // when user clicks the 'Delete' button
 deleteEmployee(id){
-    // tell the parent component (AppComponent)
-    this.show_delete_employee_event.emit({
-        empreg_id: id,
-        title: "Delete Employee"
-    });
+    this.router.navigate(['/deleteemployee', id]);
 }
  
-    // Read products from API.
+    // Read Employees from API.
     ngOnInit(){
         this._employeeService.readEmployees()
         .subscribe(response =>

@@ -10,7 +10,7 @@
 <div class="row m-b-18px">
     <div class="col-md-12">
         <!-- button to create new product -->
-        <a (click)="createEmployee()" class='btn btn-primary pull-right'>
+        <a [routerLink]="['/createemployee']" class='btn btn-primary pull-right'>
             <span class='glyphicon glyphicon-plus'></span> Create Employee
         </a>
     </div>
@@ -47,8 +47,8 @@
                 <td>{{employee.EmploymentType}}</td>
                 <td>{{employee.CTC}}</td>
                 <td style="width:270px;">
-                    <!-- read one product button -->
-                    <a (click)="readOneEmployee(employee.EmployeeRegID)" class='btn btn-primary m-r-3px'>
+                    <!-- read one product button -->                    
+                    <a (click)="readOneEmployee(employee.EmployeeRegID )" class='btn btn-primary m-r-3px'>
                         <span class='glyphicon glyphicon-eye-open'></span> Read
                     </a>
  

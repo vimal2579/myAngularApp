@@ -1,7 +1,7 @@
 <hr>
 <div class="row m-b-18px">
   <div class="col-md-12">
-      <a (click)="readEmployees()" class='btn btn-primary pull-right'>
+          <a [routerLink]="['/reademployees']" class='btn btn-primary pull-right'>
           <span class='glyphicon glyphicon-list'></span> Read Employees
       </a>
   </div>
@@ -10,8 +10,7 @@
 <div class="row">
   <div class="col-md-12">
       <!-- HTML table for displaying a product details -->
-      <table class='table table-hover table-responsive table-bordered'>
-
+      <table *ngIf="employee" class='table table-hover table-responsive table-bordered'>
           <tr>
               <td class="w-40-pct">Registration ID</td>
               <td>{{employee.EmployeeRegID}}</td>
@@ -56,7 +55,6 @@
               <td>Current CTC</td>
               <td>{{employee.CTC}}</td>
           </tr>
-
       </table>
   </div>
 </div>

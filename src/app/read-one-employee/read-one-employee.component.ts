@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, OnChanges, EventEmitter } from '@angu
 import { EmployeeService } from '../Service/employee.service';
 import { Observable} from 'rxjs';
 import { Employee } from '../employee';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-read-one-employee',
@@ -9,33 +10,28 @@ import { Employee } from '../employee';
   styleUrls: ['./read-one-employee.component.css'],
   providers: [EmployeeService]
 })
-export class ReadOneEmployeeComponent implements OnChanges {
-
-  /*
-        @Output will tell the parent component (AppComponent)
-        that an event has happened (via .emit(), see readProducts() method below)
-    */
-   @Output() show_read_employees_event = new EventEmitter();
+export class ReadOneEmployeeComponent implements OnInit {
  
-   // @Input means it will accept value from parent component (AppComponent)
-   @Input() empreg_id;
+// @Input means it will accept value from parent component (AppComponent)
+//@Input() empreg_id;
 
-   employee: Employee;
+public employeeId;
+employee: Employee;
 
-   // initialize product service
-   constructor(private employeeService: EmployeeService){}
+constructor(private employeeService: EmployeeService,
+private route : ActivatedRoute,
+private router: Router){}
 
-   // user clicks the 'read products' button
+   // user clicks the 'Read Employees' button
    readEmployees(){
-       this.show_read_employees_event.emit({ title: "Read Employees" });
-   }
-  
-   // call the record when 'product_id' was changed
-   ngOnChanges(){
-       this.employeeService.readOneEmployee(this.empreg_id)
-           .subscribe(response =>
-            this.employee=response.json());  
-            
+    this.router.navigate(['/reademployees']);
    }
 
+   ngOnInit() {
+     let id = parseInt(this.route.snapshot.paramMap.get('id'));
+     this.employeeId = id;
+     this.employeeService.readOneEmployee(this.employeeId)
+           .subscribe(response =>
+            this.employee=response.json()); 
+   }
 }
