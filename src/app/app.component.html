@@ -1,7 +1,11 @@
 <div style="text-align:center">
 <h1>
-    Employees Application
+    {{ pageTitle }}
 </h1>
+<div>
+    <button [disabled] = "isDisabled">Give Admin Access</button>
+    <img [src]="imgUrl" alt="Employees">
+</div>
 </div>
 
 <router-outlet></router-outlet>
