@@ -18,7 +18,7 @@ export class DeleteEmployeeComponent {
     private route: ActivatedRoute,
     private router: Router){}
   
-  deleteEmployee(empreg_id){
+  deleteEmployee(){
     let id = parseInt(this.route.snapshot.paramMap.get('id'));
     this.employeeId = id;
       this.employeeService.deleteEmployee(this.employeeId)
